@@ -9,10 +9,24 @@ This repository contains Tic Tac Toe Game which is built in Python.
 For running the game you need:
 
 - [Python 3.14.5](https://www.python.org/downloads/)
+- pip 26.1.2
+
+NOTE : pip will be installed with Python. You can check the Python and pip version in a console by 
+
+```shell
+python --version 
+python -m pip --version
+```
 
 ## Running
 
-- First, clone this repository on your computer or download as a zip file.
+- First, install a required package
+
+```shell
+pip install numpy
+```
+
+- Secondly, clone this repository on your computer or download as a zip file.
 ```shell
 git clone https://github.com/Nusky-cloud/tic-tac-toe-game.git
 ```
@@ -41,6 +55,6 @@ Dear Player 1, Please specify the position as row, col : 3,3
 ['.', '.', 'x']
 ```
 
-Once all the squares are filled, the winner will be announced based on all the tokens in a row (i.e. horizontally / vertically / diagonally).
+Once all the squares are filled, the winner will be announced based on same tokens in a matching row (i.e. horizontally / vertically / diagonally).
 
 The game can be played unlimited number of times and the final winner will be announced with the score of each player.

@@ -1,6 +1,7 @@
 # please note that the character 'x' represents first player's token
 # please note that the character 'o' represents second player's token
 import numpy
+import re
 
 def draw_game_board():
     no_of_columns = int(input("How many columns? "))
@@ -84,6 +85,14 @@ def play_tic_tac_toe_with_predefined_values():
 
 def place_the_token(game_board, player, no_of_positions_filled):
     player_input = input(f"Dear Player {player}, Please specify the position as row, col : ")
+    
+    # ^ symbol forces to start the match at the begining of string and $ symbol forces to end the match at the end of the string. \d symbol denotes one numerical digit. 
+    expected_input_pattern = r"^\d,\d$"
+    if not re.search(expected_input_pattern, player_input):
+        print("Incorrect. Please provide row and col number between 1-3 with comma separator")
+        print("Example :- 3,3")
+        return
+    
     player_row_position = int(player_input.split(",")[0]) - 1
     player_column_position = int(player_input.split(",")[1]) - 1
 
@@ -101,7 +110,7 @@ def place_the_token(game_board, player, no_of_positions_filled):
             for row in range(len(game_board)):
                 print(game_board[row])
     else:
-        print("input should between 1 or 2 or 3")
+        print("Incorrect. Input should be 1 or 2 or 3")
 
 def play_tic_tac_toe_with_user_input():
     game_board = [(['.'] * 3) for i in range(3)]
@@ -121,7 +130,7 @@ def play_multiple_times():
     player2_winning_times = 0
     play_again = 'y'
 
-    while play_again == 'y':
+    while play_again.casefold() == 'y':
         winner = play_tic_tac_toe_with_user_input()
         if winner == 1:
             player1_winning_times += 1
